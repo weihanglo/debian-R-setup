@@ -1,6 +1,11 @@
 ## OpenSSH
 ### Installation
 
+Secure shell is an encrypted network protocol that allow remote login securly. 
+If you have no idea what Secure Shell is, read [this][wiki-ssh] before we start.
+
+[wiki-ssh]: https://en.wikipedia.org/wiki/Secure_Shell
+
 Normally the client and server are installed by default. If not it suffices to run:
 ```bash
 test@server$ sudo apt-get update

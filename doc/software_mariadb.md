@@ -1,6 +1,13 @@
 ## MariaDB
-MariaDB is one of the most popular database server in the world. Being a community-developed fork of MySQL RDBMS, MariaDB intended to remain free under the GNU GPL license.
-To start/stop/restart MariaDB server, please read more:
+<img src="https://upload.wikimedia.org/wikipedia/en/3/3e/MariaDB_Logo_from_SkySQL_Ab.png" alt="MariaDB">
+
+MariaDB is one of the most popular database server in the world. Being a 
+community-developed fork of MySQL RDBMS, MariaDB intended to remain free under 
+the GNU GPL license.   
+
+Why choose **MariaDB** over MySQL? You should see [this][choose-mariadb]!
+[choose-mariadb]: https://seravo.fi/2015/10-reasons-to-migrate-to-mariadb-if-still-using-mysql
+
 
 ### Installation
 First download MariaDB client and server
