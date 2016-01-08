@@ -1,7 +1,7 @@
 ## Install Debian Operation System
 Here comes the most important part of this manual. Assumed you already booted your machine via the bootable device. You will enter the install welcome page, we will choose normal Install mode:
 
-<img src="./img/install-welcome.png" height="600px">
+<img src="img/install-welcome.png" height="600px">
 
 ### Setup Location, Locales and Keyboard Layout
 It is important to ensure your system time, keyboard layout is correct during the installation.  
@@ -12,20 +12,20 @@ In this manual, we choose:
 - locale: en_US.UTF-8
 - keyboard: American English
 
-<img src="./img/install-locale.gif" height="600px">
+<img src="img/install-locale.gif" height="600px">
 
 ### Setup Hostname and Account
 1. Enter the hostname for your server. (the domain name is often left blank)
 
-<img src="./img/install-hostname.gif" height="600px">
+<img src="img/install-hostname.gif" height="600px">
 
 2. **Leave blank** for the password of **root** user. (We use sudo user istead.)
 
-<img src="./img/install-root.gif" height="600px">
+<img src="img/install-root.gif" height="600px">
 
 3. Setup your sudo user's name and password.
 
-<img src="./img/install-sudouser.gif" height="600px">
+<img src="img/install-sudouser.gif" height="600px">
 
 ### Thing about Partition
 The design of partition table varies cases by cases. Assumed that you are going to setup a server for R computing.
@@ -83,24 +83,24 @@ Finally, your partition table would look like this:
 ### Setup Partition 
 1. Manual partition disks. Select which  disk to be parted.
 
-<img src="./img/install-parted1.gif" height="600px">
+<img src="img/install-parted1.gif" height="600px">
 
 2. Create new partition table. (Default: [MBR][MBR])  
   _**NOTE:** When your disk volume exceed 2 TB, you should choose [GPT][GPT] instead of default [MBR][MBR]_
 
-<img src="./img/install-parted2.gif" height="600px">
+<img src="img/install-parted2.gif" height="600px">
 
 3. Select Free Space to create new partition. 
 
-<img src="./img/install-parted3.gif" height="600px">
+<img src="img/install-parted3.gif" height="600px">
 
 4. Setup size, type and location of new partition. Should create **/boot** first for setting bootloader.
 
-<img src="./img/install-parted4.gif" height="600px">
+<img src="img/install-parted4.gif" height="600px">
 
 5. Turn on bootflag for **/boot** partition. Then write changes to disks.
 
-<img src="./img/install-parted5.gif" height="600px">
+<img src="img/install-parted5.gif" height="600px">
 
 [MBR]: https://en.wikipedia.org/wiki/Master_boot_record
 [GPT]: https://en.wikipedia.org/wiki/GUID_Partition_Table
@@ -109,34 +109,34 @@ Finally, your partition table would look like this:
 A well developed **Package Manager** can be the soul of a linux distribution, bring much convenience to download open-source software in minimum typing strokes. However, we will config our package manager later.
 1. Skip scanning another CD/DVD and network installation.
 
-<img src="./img/install-pkg1.gif" height="600px">
+<img src="img/install-pkg1.gif" height="600px">
 
 2. Decide participate Debian survey or not. (We choose no.)
 
-<img src="./img/install-pkg2.png" height="600px">
+<img src="img/install-pkg2.png" height="600px">
 
 3. Select only **standard system utilties** to install.
 
-<img src="./img/install-pkg3.png" height="600px">
+<img src="img/install-pkg3.png" height="600px">
 
 ### Install the GRUB Boot Loader into MBR
 
 By default, the amd64 boot loader **"grub"** will be installed into the Master Boot Record ([MBR][MBR]), where it will take over complete control of the boot process.
 
-<img src="./img/install-grub1.png" height="600px">
+<img src="img/install-grub1.png" height="600px">
 
 1. Select **Enter device manually**.
 
-<img src="./img/install-grub2.png" height="600px">
+<img src="img/install-grub2.png" height="600px">
 
 2. Decide where to install GRUB boot loader. (Generally, it depends on where your **/boot** partition located. In this manual, you should input **/dev/sda/**.)
 
-<img src="./img/install-grub3.png" height="600px">
+<img src="img/install-grub3.png" height="600px">
 
 3. Finished the installation.
 
-<img src="./img/install-done1.png" height="600px">
+<img src="img/install-done1.png" height="600px">
 
 4. Congratulations! You've done the most difficult part of this manual. Let's startup the server.
 
-<img src="./img/install-done2.png" height="600px">
+<img src="img/install-done2.png" height="600px">
