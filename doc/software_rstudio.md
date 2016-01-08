@@ -1,6 +1,9 @@
 ## Rstudio Server
-RStudio: a integrated development environment (IDE) for R. Also free, open source and multi-platform.
-To start/stop/restart Rstudio server, use followings commands:
+<img src="https://upload.wikimedia.org/wikipedia/en/f/f0/RStudio_logo.png" height="300px">
+
+RStudio is a integrated development environment (IDE) for R. Also free, open 
+source and multi-platform. It includes a console, graphic device, debugger, 
+command history, and workspace management just like  a Matlab environment.
 
 ### Installation
 To download and install RStudio Server. Execute the following commands. Note that **gdebi** should be installed first.
