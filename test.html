@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#setup-debian-server-for-r">Setup debian server for R</a><ul>
+<li><a href="#weihang-lo">Weihang Lo</a></li>
+</ul></li>
+<li><a href="#before-the-installation">Before the Installation</a><ul>
+<li><a href="#download-debian-image">Download Debian Image</a></li>
+<li><a href="#prepare-device-for-booting">Prepare Device for Booting</a><ul>
+<li><a href="#create-a-bootable-cddvd">Create a bootable CD/DVD</a></li>
+<li><a href="#create-a-bootable-usb-driver">Create a bootable USB driver</a></li>
+</ul></li>
+<li><a href="#set-the-bios-booting-priority">Set the BIOS Booting Priority</a></li>
+</ul></li>
+<li><a href="#install-debian">Install Debian</a><ul>
+<li><a href="#install-debian-operation-system">Install Debian Operation System</a><ul>
+<li><a href="#setup-location-locales-and-keyboard-layout">Setup Location, Locales and Keyboard Layout</a></li>
+<li><a href="#setup-hostname-and-account">Setup Hostname and Account</a></li>
+<li><a href="#thing-about-partition">Thing about Partition</a></li>
+<li><a href="#setup-partition">Setup Partition</a></li>
+<li><a href="#skip-the-configuration-of-package-manager">Skip the Configuration of Package Manager</a></li>
+<li><a href="#install-the-grub-boot-loader-into-mbr">Install the GRUB Boot Loader into MBR</a></li>
+</ul></li>
+<li><a href="#configure-the-apt-package-manager">Configure the &quot;APT&quot; Package manager</a><ul>
+<li><a href="#check-the-network-connection">Check The Network Connection</a></li>
+<li><a href="#setup-archive-mirror-repository-to-your-server">Setup Archive Mirror Repository to Your Server</a></li>
+<li><a href="#lets-learn-some-useful-apt-get-command">Let's learn some useful apt-get command:</a></li>
+</ul></li>
+<li><a href="#optional-install-graphical-user-desktop-environment">Optional: Install Graphical User Desktop Environment</a><ul>
+<li><a href="#gnome-desktop-environment-gdm">Gnome Desktop Environment (GDM)</a></li>
+<li><a href="#lxde-lightweight-x11-desktop-environment">LXDE (Lightweight X11 Desktop Environment)</a></li>
+<li><a href="#start-x-session">Start X-session</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#softwares-installation-and-other-configuration">Softwares Installation and Other Configuration</a><ul>
+<li><a href="#useful-softwares-and-services">Useful Softwares and Services</a></li>
+<li><a href="#vim">Vim</a></li>
+<li><a href="#r">R</a></li>
+<li><a href="#openssh">OpenSSH</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#simple-configuration">Simple Configuration</a></li>
+</ul></li>
+<li><a href="#rstudio-server">Rstudio Server</a><ul>
+<li><a href="#installation-1">Installation</a></li>
+<li><a href="#simple-configuration-1">Simple Configuration</a></li>
+</ul></li>
+<li><a href="#mariadb">MariaDB</a><ul>
+<li><a href="#installation-2">Installation</a></li>
+<li><a href="#simple-configuration-2">Simple Configuration</a></li>
+<li><a href="#change-mariadb-data-directory-and-other-configurations">Change MariaDB Data Directory and Other Configurations</a></li>
+<li><a href="#simple-account-management">Simple account management</a></li>
+<li><a href="#database-management-gui-tools">Database Management GUI Tools</a></li>
+<li><a href="#database-interface-for-other-language">Database Interface for Other Language</a></li>
+</ul></li>
+<li><a href="#port-forwarding-port-mapping">Port Forwarding / Port Mapping</a><ul>
+<li><a href="#configure-port-forwarding-on-a-router">Configure Port Forwarding on a Router</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="setup-debian-server-for-r">Setup debian server for R</h1>
+<h2 id="weihang-lo">Weihang Lo</h2>
+<hr/>
+<h1 id="before-the-installation">Before the Installation</h1>
+<h2 id="download-debian-image">Download Debian Image</h2>
+<p>Debian provides many options for installation.</p>
+<ul>
+<li>Download a <a href="https://www.debian.org/distrib/netinst">small installation image</a> if you have a machine with an Internet connection.</li>
+<li>Download a <a href="https://www.debian.org/CD/">complete installation image</a> if you want to install Debian without any Internet connection.</li>
+<li>Download a <a href="https://www.debian.org/CD/live/">live install image</a> if you want to test Debian before installing it.</li>
+</ul>
+<p>For the convenience, we will download [DVD version: debian-8.2.0-amd64-DVD-1.iso][DVD] in this manual.</p>
+<h2 id="prepare-device-for-booting">Prepare Device for Booting</h2>
+<p>After downloading the CD/DVD image, you need to write them directly to an USB stick or a CD/DVD.</p>
+<h3 id="create-a-bootable-cddvd">Create a bootable CD/DVD</h3>
+<p>Create a bootable CD/DVD is as easy as burning your favorite movie into your DVD. Almost all modern operation systems have som built-in disc burner. To create your own bootable device, follow the approaches below:</p>
+<ul>
+<li>For Windows: <a href="http://windows.microsoft.com/en-US/windows7/Burn-a-CD-or-DVD-from-an-ISO-file">built-in disc burner</a></li>
+<li>For Mac OSX: <a href="https://support.apple.com/kb/PH19009?locale=en_US">built-in method</a></li>
+<li>For Linux: <a href="http://askubuntu.com/questions/136165/how-to-create-iso-images">built-in application in Gnome Desktop Environment</a></li>
+</ul>
+<p>Finally, your CD/DVD turns into a &quot;bootable device&quot;.</p>
+<h3 id="create-a-bootable-usb-driver">Create a bootable USB driver</h3>
+<p>If you do not have any blank CD at hand, you can use an USB stick as a bootable device.</p>
+<ol style="list-style-type: decimal">
+<li>Download <a href="https://unetbootin.github.io/"><strong>UNetbootin</strong></a>.</li>
+<li>Start UNetbootin and select the installation <strong>diskimage</strong> you've downloaded.</li>
+<li>Select <strong>Type</strong> as <strong>USB Drive</strong></li>
+<li>Select <strong>Drive</strong> as where your USB stick mounted.</li>
+<li>Click <strong>OK</strong>.</li>
+</ol>
+<div class="figure">
+<img src="./img/unetbootin.jpg" title="UNetbootin" />
+
+</div>
+<p>After the process completes, you will get a <strong>reusable</strong> bootable USB stick.</p>
+<h2 id="set-the-bios-booting-priority">Set the BIOS Booting Priority</h2>
+<p>BIOS is a built-in firmware to perform hardware initialization during startup on PC. One of its main functions is to select which devices are potential bootable devices, and in which order booting from them will be attempted. Thus, you should configure your bootable device first for the boot priority.</p>
+<ol style="list-style-type: decimal">
+<li>A modern BIOS setup utility can accessed by pressing a certain key on the keyboard when the PC starts. Usually the key is advertised for short time during the early startup, for example &quot;<strong>Press F2 for Setup Menu.</strong>&quot;.</li>
+</ol>
+<p><img src="./img/bios-1.jpg" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Then switch to <strong>Boot</strong> tab.</li>
+</ol>
+<p><img src="./img/bios-2.jpg" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select your bootable USB stick as <strong>1st Boot Device</strong>.</li>
+</ol>
+<p><img src="./img/bios-3.jpg" height="600px"></p>
+<p>Once your computer restarts, it will boot using your new boot order priority.</p>
+<p><em><strong>NOTE:</strong> While different computers use different BIOS keys and have different BIOS layouts, the process is similar on most computers.</em></p>
+<h1 id="install-debian">Install Debian</h1>
+<h2 id="install-debian-operation-system">Install Debian Operation System</h2>
+<p>Here comes the most important part of this manual. Assumed you already booted your machine via the bootable device. You will enter the install welcome page, we will choose normal Install mode:</p>
+<p><img src="./img/install-welcome.png" height="600px"></p>
+<h3 id="setup-location-locales-and-keyboard-layout">Setup Location, Locales and Keyboard Layout</h3>
+<p>It is important to ensure your system time, keyboard layout is correct during the installation.<br />In this manual, we choose:</p>
+<ul>
+<li>system language: English</li>
+<li>location: Other/Asia/Taiwan</li>
+<li>locale: en_US.UTF-8</li>
+<li>keyboard: American English</li>
+</ul>
+<p><img src="./img/install-locale.gif" height="600px"></p>
+<h3 id="setup-hostname-and-account">Setup Hostname and Account</h3>
+<ol style="list-style-type: decimal">
+<li>Enter the hostname for your server. (the domain name is often left blank)</li>
+</ol>
+<p><img src="./img/install-hostname.gif" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Leave blank</strong> for the password of <strong>root</strong> user. (We use sudo user istead.)</li>
+</ol>
+<p><img src="./img/install-root.gif" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Setup your sudo user's name and password.</li>
+</ol>
+<p><img src="./img/install-sudouser.gif" height="600px"></p>
+<h3 id="thing-about-partition">Thing about Partition</h3>
+<p>The design of partition table varies cases by cases. Assumed that you are going to setup a server for R computing. You want to mix a <strong>5 TB HDD</strong> and a <strong>1 GB SSD</strong> for these two aims:</p>
+<ul>
+<li>Speed up your system: as much commonly used data as possible stays on the SSD.</li>
+<li>Keep volatile data off the SSD to reduce wear.</li>
+</ul>
+<p>A scheme would be like this:</p>
+<ul>
+<li>SSD: /boot, / (root), /usr</li>
+<li>HDD: /var, /home, /tmp, swap</li>
+</ul>
+<p>The recommended size of the partitions:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki//boot">/boot</a> : 200 - 500 MB For store multiple kernels/boot images, around 350 MB of partition size is sufficient.</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Root_directory">/ (root)</a> : &gt; 20 GB Traditionally, <strong>/ (root)</strong> contains the [<strong>/usr</strong>][/usr] directory, which can grow significantly depending on how much softwares installed (softwares installed in /usr usually be shared among all users.)</p></li>
+<li><p><a href="http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/var.html">/var</a> : 8-15 GB This partition may contain mails, cache, and other user programs and daemon. Seperate it from / (root) can reduce danger and wear of your SDD.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">/tmp</a>: &gt; 2 GB This partition stored temporary files. For instance, your downloaded a Debian DVD image via Firefix with open option. It would download to <strong>/tmp</strong>. If you are going to do simulation with lots of temporary output files, you can save them inside <strong>/tmp</strong>. The recommanded size is not less 2 GB.</p></li>
+<li><p><a href="https://wiki.debian.org/Swap">swap</a> : [varies] Swap area is so called virtual memory. The old general rule for swap partition size was to allocate twice the amount of physical RAM. If a sufficient amount of your physical RAM is available, it is possible to have a smaller partition size of swap area.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Home_directory">/home</a> : [varies] It is typically where user data, downloads, and multimedia reside. On a desktop system, <strong>/home</strong> is typically the largest filesystem on the drive.</p></li>
+</ul>
+<p>Finally, your partition table would look like this:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">  <span class="kw">SCSI1</span> (0,0,0) <span class="kw">(sda)</span> <span class="kw">-</span> 1.0 GB VBOX VIRTUAL SSD
+        <span class="co">#1 primary  500.0 MB  B  f  ext4  /boot</span>
+        <span class="co">#2 primary    5.0 GB     f  ext4  / </span>
+        <span class="co">#5 logical  100.0 GB     f  ext4  /usr</span>
+
+  <span class="kw">SCSI2</span> (1,0,0) <span class="kw">(sdb)</span> <span class="kw">-</span> 5.0 TB VBOX HARDDISK GPT
+        <span class="co">#1 primary   30.0 GB     f  ext4  /var</span>
+        <span class="co">#2 primary  100.0 GB     f  swap  swap</span>
+        <span class="co">#3 primary   20.0 GB     f  ext4  /tmp</span>
+        <span class="co">#4 primary    4.0 TB     f  ext4  /home</span>
+        <span class="co">#5            0.7 TB        FREE SPACE</span></code></pre>
+<h3 id="setup-partition">Setup Partition</h3>
+<ol style="list-style-type: decimal">
+<li>Manual partition disks. Select which disk to be parted.</li>
+</ol>
+<p><img src="./img/install-parted1.gif" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Create new partition table. (Default: <a href="https://en.wikipedia.org/wiki/Master_boot_record">MBR</a>)<br /> <em><strong>NOTE:</strong> When your disk volume exceed 2 TB, you should choose <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GPT</a> instead of default <a href="https://en.wikipedia.org/wiki/Master_boot_record">MBR</a></em></li>
+</ol>
+<p><img src="./img/install-parted2.gif" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select Free Space to create new partition.</li>
+</ol>
+<p><img src="./img/install-parted3.gif" height="600px"></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Setup size, type and location of new partition. Should create <strong>/boot</strong> first for setting bootloader.</li>
+</ol>
+<p><img src="./img/install-parted4.gif" height="600px"></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Turn on bootflag for <strong>/boot</strong> partition. Then write changes to disks.</li>
+</ol>
+<p><img src="./img/install-parted5.gif" height="600px"></p>
+<h3 id="skip-the-configuration-of-package-manager">Skip the Configuration of Package Manager</h3>
+<p>A well developed <strong>Package Manager</strong> can be the soul of a linux distribution, bring much convenience to download open-source software in minimum typing strokes. However, we will config our package manager later. 1. Skip scanning another CD/DVD and network installation.</p>
+<p><img src="./img/install-pkg1.gif" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Decide participate Debian survey or not. (We choose no.)</li>
+</ol>
+<p><img src="./img/install-pkg2.png" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select only <strong>standard system utilties</strong> to install.</li>
+</ol>
+<p><img src="./img/install-pkg3.png" height="600px"></p>
+<h3 id="install-the-grub-boot-loader-into-mbr">Install the GRUB Boot Loader into MBR</h3>
+<p>By default, the amd64 boot loader <strong>&quot;grub&quot;</strong> will be installed into the Master Boot Record (<a href="https://en.wikipedia.org/wiki/Master_boot_record">MBR</a>), where it will take over complete control of the boot process.</p>
+<p><img src="./img/install-grub1.png" height="600px"></p>
+<ol style="list-style-type: decimal">
+<li>Select <strong>Enter device manually</strong>.</li>
+</ol>
+<p><img src="./img/install-grub2.png" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Decide where to install GRUB boot loader. (Generally, it depends on where your <strong>/boot</strong> partition located. In this manual, you should input <strong>/dev/sda/</strong>.)</li>
+</ol>
+<p><img src="./img/install-grub3.png" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Finished the installation.</li>
+</ol>
+<p><img src="./img/install-done1.png" height="600px"></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Congratulations! You've done the most difficult part of this manual. Let's startup the server.</li>
+</ol>
+<p><img src="./img/install-done2.png" height="600px"></p>
+<h2 id="configure-the-apt-package-manager">Configure the &quot;APT&quot; Package manager</h2>
+<h3 id="check-the-network-connection">Check The Network Connection</h3>
+<p>Although you've succeed the installation, you cannot do anything without configuring your source of your <strong>package manager</strong>.</p>
+<p>Most Debian-based systems provied a powerful package manager called <strong>Advanced Packaging Tool</strong>, or <strong>APT</strong>. We can easily use <strong>apt-get</strong> command to install/remove open-source software in the Debian repository.</p>
+<p>Before starting the configuraion, check the network connection in advance:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ ping www.gooogle.com</code></pre>
+<p>If you receive something like, it mean your connection is well:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">PING</span> www.google.com (74.125.203.105) <span class="kw">56</span>(84) <span class="kw">bytes</span> of data.
+<span class="kw">64</span> bytes from th-in-f105.1e100.net (74.125.203.105)<span class="kw">:</span> icmp_seq=1 ttl=46 time=15.6 ms
+<span class="kw">64</span> bytes from th-in-f105.1e100.net (74.125.203.105)<span class="kw">:</span> icmp_seq=2 ttl=46 time=15.4 ms
+<span class="kw">64</span> bytes from th-in-f105.1e100.net (74.125.203.105)<span class="kw">:</span> icmp_seq=3 ttl=46 time=15.6 ms</code></pre>
+<h3 id="setup-archive-mirror-repository-to-your-server">Setup Archive Mirror Repository to Your Server</h3>
+<ul>
+<li><p>Open <strong>/etc/apt/source.list</strong> We will use <strong>vi</strong> to edit <strong>source.list</strong>. If you are not familiar to <strong>vi</strong>, use <strong>nano</strong> to substitube for <strong>vi</strong> in the command.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo vi /etc/apt/source.list</code></pre></li>
+<li><p>For an archieve mirror of Debian 8 (jessie) repository, simply add following lines into <strong>sourece.list</strong>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">deb</span> http://<span class="kw">&lt;</span>favourite-debian-mirror<span class="kw">&gt;</span>/debian/ jessie main
+<span class="kw">deb-src</span> http://<span class="kw">&lt;</span>favourite-debian-mirror<span class="kw">&gt;</span>/debian/ jessie main</code></pre>
+<p><em><strong>NOTE</strong>: You need to substitute</em> <code>&lt;favourite-cran-mirror&gt;</code> <em>by one of the mirror URLs listed in the <a href="https://www.debian.org/mirror/list">mirror list</a>.</em> <em>For example:</em> <code>deb http://debian.csie.ntu.edu.tw/debian/ jessie main</code></p></li>
+<li><p>Comment out the sources from CD/DVD In the <strong>source.list</strong> file, there are some CD/DVD sources reserved for dealing some situation without network in the future. For now, they are useless and should be commented out:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># deb cdrom:[Debian GNU/Linux 8.2.0 _Jessie_ - Official amd64 CD Binary-1 20150906-11:13]/ jessie contrib main</span>
+<span class="co"># deb cdrom:[Debian GNU/Linux 8.2.0 _Jessie_ - Official amd64 CD Binary-1 20150906-11:13]/ jessie contrib main</span></code></pre></li>
+</ul>
+<p>After all the commands above, you can install whatever your want in the Debian Repository.</p>
+<h3 id="lets-learn-some-useful-apt-get-command">Let's learn some useful apt-get command:</h3>
+<ul>
+<li><strong>apt-get update</strong>: This command can resynchronize and update all packages from the sources. For security issue, ensure you update your server regulariry.</li>
+<li><strong>apt-get install/remove</strong>: These command can simply install/remove packages you specified.</li>
+<li><strong>apt-get auroremove</strong>: After you remove some pakcages, you may want to execute this command for <strong>clean all the dependency</strong>.</li>
+</ul>
+<h2 id="optional-install-graphical-user-desktop-environment">Optional: Install Graphical User Desktop Environment</h2>
+<p>If you are not comfortable with command line interface, you can download your favorite desktop environment such as Gnome or KDE from the Debian repository. Following are some commands to install them.</p>
+<h3 id="gnome-desktop-environment-gdm">Gnome Desktop Environment (GDM)</h3>
+<p>The <a href="https://www.gnome.org/">GNOME</a> Desktop Enviroment is an fantastic-looking, modern, and useful desktop environment. <a href="https://www.gnome.org/">GNOME</a> is both free and one of the most widely used desktop environments on the GNU/Linux operating system.</p>
+<p>To install it, first make sure that tasksel and aptitude are installed:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get install aptitude tasksel</code></pre>
+<p>Then, install the GNOME task:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo tasksel install gnome-desktop --new-install</code></pre>
+<h3 id="lxde-lightweight-x11-desktop-environment">LXDE (Lightweight X11 Desktop Environment)</h3>
+<p><a href="http://lxde.org/">LXDE</a> is a free desktop environment with comparatively low resource requirements. It is recommanded if you only need basic operation with graphical interface.<br />To install a complete Debian <a href="http://lxde.org/">LXDE</a> desktop environment, execute commands below:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install task-lxde-desktop</code></pre>
+<h3 id="start-x-session">Start X-session</h3>
+<p>After the installation, you can simply enter the desktop environment by execute the command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ startx</code></pre>
+<p><em><strong>NOTE:</strong> Click <a href="https://wiki.debian.org/DesktopEnvironment">here</a> for more desktop environment installation guide.</em></p>
+<h1 id="softwares-installation-and-other-configuration">Softwares Installation and Other Configuration</h1>
+<h2 id="useful-softwares-and-services">Useful Softwares and Services</h2>
+<p>Before starting any simulations or programming, you need to install the following software:</p>
+<ul>
+<li><a href="www.vim.org">Vim</a>: Powerful text editor.</li>
+<li><a href="https://www.r-project.org/">R</a>: An open source, multi-platfrom language and environment for statistical computing and graphics.<br /></li>
+<li><a href="http://www.openssh.com/">openssh</a>: Premier connectivity tool for remote login with the SSH protocol.</li>
+<li><a href="https://www.rstudio.com/">Rstudio Server</a>: Productive user interface for R. Also free, open-source, and cross-paltform.</li>
+<li><a href="https://mariadb.org/">MariaDB</a>: A popular database servers. Made by the original developers of MySQL.</li>
+</ul>
+<p>While any package would have been tested thoroughly before included in a Debian stable release, the latest version of R and other packages won't be included in the repository. Hence, you need to add some additional repositories manually.</p>
+<p>The following steps are all done in command line (or terminal emulator).</p>
+<h2 id="vim">Vim</h2>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install vim</code></pre>
+<h2 id="r">R</h2>
+<p>For downloading latest version of R, adding additional repositories to debian repository list is required.</p>
+<ul>
+<li><p>For a backport of latest R to Debian 8 (jessie), simply open <strong>/etc/apt/sourece.list</strong>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo vim /etc/apt/source.list</code></pre></li>
+<li><p>Then add following lines into <strong>/etc/apt/sourece.list</strong>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">deb</span> http://<span class="kw">&lt;</span>favourite-cran-mirror<span class="kw">&gt;</span>/bin/linux/debian jessie-cran3/
+<span class="kw">deb-src</span> http://<span class="kw">&lt;</span>favourite-cran-mirror<span class="kw">&gt;</span>/bin/linux/debian jessie-cran3/</code></pre>
+<p><em><strong>NOTE</strong>: You need to substitute</em> <code>&lt;favourite-cran-mirror&gt;</code> <em>by one of the mirror URLs listed in the <a href="http://cran.r-project.org/mirrors.html">mirror list</a>.</em><br /><em>For example:</em> <code>deb http://cran.csie.ntu.edu.tw/bin/linux/debian jessie-cran3/</code>.</p></li>
+<li><p>Fetch and import Debian backports archives on CRAN (CRAN Debian archive) with key ID 381BA480.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480</code></pre></li>
+<li><p>Finally, install R.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install r-base r-base-dev</code></pre></li>
+<li><p>After the installation, execute this command to check the version of R in your server is up-to-date.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ R --version</code></pre></li>
+</ul>
+<h2 id="openssh">OpenSSH</h2>
+<h3 id="installation">Installation</h3>
+<p>Normally the client and server are installed by default. If not it suffices to run:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install openssh-client openssh-server</code></pre>
+<h3 id="simple-configuration">Simple Configuration</h3>
+<p>The main configuration files are in the directory <strong>/etc/ssh</strong>:</p>
+<p><strong>ssh_config</strong> : client configuration file <strong>sshd_config</strong> : server configuration file</p>
+<p>We will only cover the server configuration in this manual.</p>
+<ul>
+<li><p>Open <strong>/ect/ssh/sshd_config</strong> for editing.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo vim /etc/ssh/sshd_config</code></pre></li>
+<li><p>For security, change the listening port instead of default TCP port 22 as such:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Port</span> 10022</code></pre></li>
+<li><p>Ensure that <strong>PermitRootLogin</strong> is set to <strong>no</strong> in sshd_config (we use sudo-user only):</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">PermitRootLogin</span> no</code></pre></li>
+<li><p>Start your SSH service.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo /etc/init.d/ssh start</code></pre></li>
+</ul>
+<p><em><strong>NOTE:</strong> After any configuration, always restart server to apply your changes.</em></p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo /etc/init.d/ssh restart</code></pre>
+<h2 id="rstudio-server">Rstudio Server</h2>
+<p>RStudio: a integrated development environment (IDE) for R. Also free, open source and multi-platform. To start/stop/restart Rstudio server, use followings commands:</p>
+<h3 id="installation-1">Installation</h3>
+<p>To download and install RStudio Server. Execute the following commands. Note that <strong>gdebi</strong> should be installed first.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install gdebi-core
+<span class="kw">test@server</span>$ wget https://download2.rstudio.org/rstudio-server-0.99.491-amd64.deb
+<span class="kw">test@server</span>$ sudo gdebi rstudio-server-0.99.491-amd64.deb</code></pre>
+<p>To verify your installation, excute following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo rstudio-server verify-installation</code></pre>
+<h3 id="simple-configuration-1">Simple Configuration</h3>
+<p>Simple commands for start/stop/restart server</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo rstudio-server stop
+<span class="kw">test@server</span>$ sudo rstudio-server start
+<span class="kw">test@server</span>$ sudo rstudio-server restart</code></pre>
+<p>The default port for Rstudio server is <strong>8787</strong>. That means any can connect to the server through the URL <strong>http://<server-ip/hostname>:8787</strong>.<br />If you wish to change to another port, you should add following configuration into <strong>/etc/rstudio/rserver.conf</strong> file. For example:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">www-port</span>=18787</code></pre>
+<p>Note that after any configuration, always restart server to apply your changes.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo rstudio-server restart</code></pre>
+<p>Other tips: - The users in Rstudio server are references to users of system. - Each user needs to be created with a home directory. - More tips on <a href="https://support.rstudio.com/hc/en-us/sections/200150693-RStudio-Server">Rstudio server support</a>.</p>
+<h2 id="mariadb">MariaDB</h2>
+<p>MariaDB is one of the most popular database server in the world. Being a community-developed fork of MySQL RDBMS, MariaDB intended to remain free under the GNU GPL license. To start/stop/restart MariaDB server, please read more:</p>
+<h3 id="installation-2">Installation</h3>
+<p>First download MariaDB client and server</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install mariadb-client mariadb-server</code></pre>
+<p>Then, set the password for root. <img src="./img/mariadb.png" height="600px"></p>
+<p>Finally, start MariaDB server</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo /etc/init.d/mysql start</code></pre>
+<h3 id="simple-configuration-2">Simple Configuration</h3>
+<p>Simple commands for start/stop/restart server:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo rstudio-server stop
+<span class="kw">test@server</span>$ sudo rstudio-server start
+<span class="kw">test@server</span>$ sudo rstudio-server restart</code></pre>
+<p>Mariadb setup initial databse in /var/lib/mysql by default. If you want to manually configure your installation, go to the secure installation:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo mysql_secure_installation</code></pre>
+<p>If you have set a strong password, skip the first step.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">NOTE</span>: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      <span class="kw">SERVERS</span> IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+<span class="kw">In</span> order to log into MariaDB to secure it, we<span class="st">&#39;ll need the current</span>
+<span class="st">password for the root user.  If you&#39;</span>ve just installed MariaDB, and
+<span class="kw">you</span> haven<span class="st">&#39;t set the root password yet, the password will be blank,</span>
+<span class="st">so you should just press enter here.</span>
+
+<span class="st">Enter current password for root (enter for none):</span>
+
+
+<span class="st">OK, successfully used password, moving on...</span>
+
+<span class="st">Setting the root password ensures that nobody can log into the MariaDB</span>
+<span class="st">root user without the proper authorisation.</span>
+
+<span class="st">You already have a root password set, so you can safely answer &#39;</span>n<span class="st">&#39;.</span>
+
+<span class="st">Change the root password? [Y/n]</span></code></pre>
+<p>Recommand to <strong>remove anomyous users</strong> for security.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">By</span> default, a MariaDB installation has an anonymous user, allowing anyone
+<span class="kw">to</span> log into MariaDB without having to have a user account created for
+<span class="kw">them.</span>  This is intended only for testing, and to make the installation
+<span class="kw">go</span> a bit smoother.  You should remove them before moving into a
+<span class="kw">production</span> environment.
+
+<span class="kw">Remove</span> anonymous users? [Y/n]</code></pre>
+<p>For security issue, do not allow remote login for root.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Normally</span>, root should only be allowed to connect from <span class="st">&#39;localhost&#39;</span>.  This
+<span class="kw">ensures</span> that someone cannot guess at the root password from the network.
+
+<span class="kw">Disallow</span> root login remotely? [Y/n]</code></pre>
+<p>Removing or not is all your choices.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">By</span> default, MariaDB comes with a database named <span class="st">&#39;test&#39;</span> that anyone can
+<span class="kw">access.</span>  This is also intended only for testing, and should be removed
+<span class="kw">before</span> moving into a production environment.
+
+<span class="kw">Remove</span> test database and access to it? [Y/n]</code></pre>
+<p>Finally, flush all changes now.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Reloading</span> the privilege tables will ensure that all changes made so far
+<span class="kw">will</span> take effect immediately.
+
+<span class="kw">Reload</span> privilege tables now? [Y/n]</code></pre>
+<h3 id="change-mariadb-data-directory-and-other-configurations">Change MariaDB Data Directory and Other Configurations</h3>
+<p>MariaDB save all databases in <code>/var/lib/mysql/</code> by default. If you aim to store Terabytes of data, your <code>/var</code> partition might get full. To avoid this, you can modifiy some MariaDB variables.</p>
+<p>First, stop MariaDB service.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo service mysql start </code></pre>
+<p>Copy the existing data directory. Note that</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo cp -R -p /var/lib/mysql /newpath/by/your-choice</code></pre>
+<p>Edit the MariaDB configuration file</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo vim /etc/mysql/my.cnf</code></pre>
+<p>Look for the entry for <strong>datadir</strong> (usually under <strong>[mysqld]</strong>). Change the path (default: <strong>/var/lib/mysql</strong>) to your new data directory.</p>
+<pre class="bahs"><code>[mysqld]
+...
+...
+other config
+...
+
+datadir = /newpath/by/your-choice</code></pre>
+<p>Restart MariaDB server.</p>
+<pre><code>test@server$ sudo service mysql start</code></pre>
+<p>In addition, you can also change port for client under <strong>[client]</strong> group configuration. Default: 3306</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">client</span>]
+<span class="kw">port</span> = 13306</code></pre>
+<h3 id="simple-account-management">Simple account management</h3>
+<p>MariaDB provide a command line tool. To enter your database on localhost, you must explicit input <strong>user</strong> and <strong>password</strong>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ mysql -u root -p</code></pre>
+<p>If you succeed, you would see this:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">MariaDB</span> [(none)]<span class="kw">&gt;</span> </code></pre>
+<p>To create a super user that can remotely login, follow the commands in MariaDB shell:</p>
+<pre><code>MariaDB [(none)]&gt; CREATE USER your_super_user@&#39;%&#39; IDENTIFIED BY &#39;your-Pa$$w0rD&#39;;</code></pre>
+<p>Then give all usage to the super user on all database (include create/drop other users)</p>
+<pre><code>MariaDB [(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO your_super_user@&#39;%&#39; with grant option; </code></pre>
+<p>For more management of accounts and usages. Please read the [official documentation][grant]. [grant]: https://mariadb.com/kb/en/mariadb/grant/</p>
+<h3 id="database-management-gui-tools">Database Management GUI Tools</h3>
+<p>Using GUI tools for daily database management will save your live from works. Here are some recommandation:</p>
+<p><a href="http://www.mysql.com/products/workbench/">MySQL Workbench</a>: MySQL Official GUI Tools. Provides many advanced functions.<br /><a href="https://www.phpmyadmin.net/">phpMyAdmin</a>: A Web interface tool written in PHP. Can I/O data to various formats (CSV, XML...).<br /><a href="http://www.heidisql.com/">HeidiSQL</a>: A lightweith tool for database management. Has protable version. <em>Windows only</em>.<br /><a href="https://github.com/webyog/sqlyog-community/wiki/Downloads">SQLyog Community Edition</a>: Community edition of SQLyog MySQL administration tool.</p>
+<h3 id="database-interface-for-other-language">Database Interface for Other Language</h3>
+<p>Mariadb is under GPL license. Some other language need a less strict license version to connect to MariaDB server. Hence, install LGPL version library of client-side.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">test@server</span>$ sudo apt-get update
+<span class="kw">test@server</span>$ sudo apt-get install libmariadb-client-lgpl-dev</code></pre>
+<p>With this library, you can user almost all SQL-like commands via popular languages such as R:</p>
+<pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">require</span>(RMySQL)) <span class="kw">install.package</span>(<span class="st">&quot;RMySQL&quot;</span>)
+<span class="co"># Connect to a database</span>
+conn &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(), <span class="dt">dbname =</span> <span class="st">&quot;test&quot;</span>)
+<span class="kw">print</span>(conn)</code></pre>
+<pre><code>## &lt;MySQLConnect:0,0&gt;</code></pre>
+<p>Write data.frame into database. Then read it.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbWriteTable</span>(conn, <span class="dt">name =</span> <span class="st">&quot;mtcars&quot;</span>, <span class="dt">value =</span> datasets::mtcars)
+
+test_mtcars &lt;-<span class="st"> </span><span class="kw">dbReadTable</span>(conn, <span class="st">&quot;mtcars&quot;</span>)
+<span class="kw">dim</span>(test_mtcars)</code></pre>
+<pre><code>## [1] 32 11</code></pre>
+<p>SQL query statement</p>
+<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(conn, <span class="st">&quot;SELECT * FROM mtcars&quot;</span>)
+<span class="kw">dbFetch</span>(res, <span class="dt">n =</span> <span class="dv">3</span>)</code></pre>
+<pre><code>##       row_names  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1     Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2 Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3    Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbClearResult</span>(res) <span class="co"># Clear the unused query results.</span></code></pre>
+<p>Remove table and disconnect</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbRemoveTable</span>(conn, <span class="st">&quot;mtcars&quot;</span>)
+<span class="kw">dbDisconnect</span>(conn)</code></pre>
+<h2 id="port-forwarding-port-mapping">Port Forwarding / Port Mapping</h2>
+<p>To forward ports, you first need to understand about what your router does.</p>
+<p>Your router has a function called <strong>Network Address Translation</strong>, or <strong>NAT</strong>, built-in. Inside your network, computers get their own addresses like <strong>192.168.1.100</strong>. These addresses are called <a href="http://en.wikipedia.org/wiki/Reserved_IP_addresses">&quot;private&quot;</a> or <a href="http://en.wikipedia.org/wiki/Private_IP_addresses#Private_IPv4_address_spaces">&quot;reserved&quot;</a> addresses which automatically assigned by your home router via <a href="http://en.wikipedia.org/wiki/DHCP">DHCP</a>. A computers can communicate with router and with each other via its own address.</p>
+<p>However, these <strong>&quot;private&quot; addresses</strong> could only be recognized within private network. It will be failed if others want to connect to a specific computer via an address like <strong>192.163.1.100</strong>. Therefore, we should change it from the private IP of the computer to the public IP of the router. This is so called the <a href="https://en.wikipedia.org/wiki/Port_forwarding">port forwarding</a>.</p>
+<h3 id="configure-port-forwarding-on-a-router">Configure Port Forwarding on a Router</h3>
+<p>Configuration of port forwarding often varies from routers to routers. In this munual, we would use <strong>D-Link</strong> for demonstration.</p>
+<ol style="list-style-type: decimal">
+<li>Use your favorite browser to visit <strong>&quot;192.168.0.1&quot;</strong> to connect to your D-Link router.</li>
+</ol>
+<p><img src="./img/port_forwarding-1.png" height="600px"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Select <strong>Network Setting</strong> at the sidebar. Then scroll to <strong>Add New DHCP Reservation</strong>.</li>
+</ol>
+<p><img src="./img/port_forwarding-2.png" height="600px"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Add a new <strong>DHCP reservation</strong> for your server's IP. Remember to save your configuration.</li>
+</ol>
+<p><img src="./img/port_forwarding-3.png" height="600px"></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Wait for seconds. Then Select <strong>Advance Setting</strong> at the top bar. Select <strong>Virtual Server</strong> at the siderbar.</li>
+</ol>
+<p><img src="./img/port_forwarding-4.png" height="600px"></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Add virtual server.
+<ol style="list-style-type: lower-alpha">
+<li>Add a new application named <strong>SSH</strong>. Set <strong>Public port</strong> at what you set in <strong>sshd_config</strong>. (We use 10022 for demo.)<br /><em><strong>NOTE:</strong> Your can also set a port for private network</em></li>
+<li>Select the <strong>machine/server</strong> your want to forward the port. (Or just type its <strong>private IP</strong>)<br /><em><strong>NOTE:</strong> Remember to save your changes</em></li>
+</ol></li>
+</ol>
+<p><img src="./img/port_forwarding-5.gif" height="600px"></p>
+<p><em><strong>NOTE:</strong> Connecting to your Rstudio server via TCP/IP is exactly the same thing as connecting to your SSH server. The only thing need to change is the port you forwarding. (Default port of Rstudio server is 8787.)</em></p>
+</body>
+</html>

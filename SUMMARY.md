@@ -1,0 +1,43 @@
+# Summary
+
+-   [Before the Installation](doc/before_install.md)
+    -   Download Debian Image
+    -   Prepare Device for Booting
+        -   Create a bootable CD/DVD
+        -   Create a bootable USB driver
+    -   Set the BIOS Booting Priority
+-   [Install Debian](doc/install_debian.md)
+    -   [Install Debian Operation System](doc/install_os.md)
+        -   Setup Location, Locales and Keyboard Layout
+        -   Setup Hostname and Account
+        -   Thing about Partition
+        -   Setup Partition
+        -   Skip the Configuration of Package Manager
+        -   Install the GRUB Boot Loader into MBR
+    -   [Configure the "APT" Package manager](doc/install_apt.md)
+        -   Check The Network Connection
+        -   Setup Archive Mirror Repository to Your Server
+        -   Let's learn some useful apt-get command:
+    -   [Optional: Install Graphical User Desktop Environment](doc/install_desktop-env.md)
+        -   Gnome Desktop Environment (GDM)
+        -   LXDE (Lightweight X11 Desktop Environment)
+        -   Start X-session
+-   [Softwares Installation and Other Configuration](doc/software_vim_R.md)
+    -   Useful Softwares and Services
+    -   Vim
+    -   R
+    -   [OpenSSH](doc/software.md)
+        -   Installation
+        -   Simple Configuration
+    -   [Rstudio Server](doc/software_R-server.md)
+        -   Installation
+        -   Simple Configuration
+    -   [MariaDB](doc/software_R-server.md)
+        -   Installation
+        -   Simple Configuration
+        -   Change MariaDB Data Directory and Other Configurations
+        -   Simple account management
+        -   Database Management GUI Tools
+        -   Database Interface for Other Language
+    -   [Additional: Port Forwarding / Port Mapping](doc/config_port.md)
+        -   Configure Port Forwarding on a Router
