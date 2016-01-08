@@ -41,7 +41,7 @@ If you do not have any blank CD at hand, you can use an USB stick as a bootable 
 4. Select **Drive** as where your USB stick mounted.
 5. Click **OK**.
 
-![](img/unetbootin.jpg "UNetbootin")
+<img src="../img/unetbootin.jpg" height="600px">
 
 After the process completes, you will get a **reusable** bootable USB stick.
 
@@ -50,15 +50,15 @@ BIOS is a built-in firmware to perform hardware initialization during startup on
 
 1. A modern BIOS setup utility can accessed by pressing a certain key on the keyboard when the PC starts. Usually the key is advertised for short time during the early startup, for example "**Press F2 for Setup Menu.**".
 
-<img src="img/bios-1.jpg" height="600px">
+<img src="../img/bios-1.jpg" height="600px">
 
 2. Then switch to **Boot** tab.
 
-<img src="img/bios-2.jpg" height="600px">
+<img src="../img/bios-2.jpg" height="600px">
 
 3. Select your bootable USB stick as **1st Boot Device**.
 
-<img src="img/bios-3.jpg" height="600px">
+<img src="../img/bios-3.jpg" height="600px">
 
 Once your computer restarts, it will boot using your new boot order priority.  
 

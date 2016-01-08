@@ -10,7 +10,7 @@ test@server$ sudo apt-get install mariadb-client mariadb-server
 ```
 
 Then, set the password for root.
-<img src="img/mariadb.png" height="600px">
+<img src="../img/mariadb.png" height="600px">
 
 Finally, start MariaDB server
 ```bash
