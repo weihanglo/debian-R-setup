@@ -225,3 +225,4 @@ dbRemoveTable(conn, "mtcars")
 dbDisconnect(conn)
 ```
 
+If you are interesting in R and database. Do not miss [R DBI package on github](https://github.com/rstats-db/DBI).

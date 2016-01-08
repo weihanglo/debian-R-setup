@@ -1,4 +1,4 @@
-## Configure the "APT" Package manager
+## Configure the APT Package manager
 ### Check The Network Connection
 
 Although you've succeed the installation, you cannot do anything without configuring your source of your **package manager**.
@@ -36,7 +36,8 @@ _**NOTE**: You need to substitute_ `<favourite-cran-mirror>` _by one of the mirr
 _For example:_ `deb http://debian.csie.ntu.edu.tw/debian/ jessie main`
 
 - Comment out the sources from CD/DVD
-In the **source.list** file, there are some CD/DVD sources reserved for dealing some situation without network in the future. For now, they are useless and should be commented out:  
+In the **source.list** file, there are some CD/DVD sources reserved for dealing some situation without network in the future.   
+For now, they are useless and should be commented out:  
 ```bash
 # deb cdrom:[Debian GNU/Linux 8.2.0 _Jessie_ - Official amd64 CD Binary-1 20150906-11:13]/ jessie contrib main
 # deb cdrom:[Debian GNU/Linux 8.2.0 _Jessie_ - Official amd64 CD Binary-1 20150906-11:13]/ jessie contrib main

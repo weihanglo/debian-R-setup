@@ -1,6 +1,7 @@
 # Tutorial: Debian Server for R Computing
 
-This tutorial give step by step instructions for setup a Debian server with R' powerful computing abilities. 
+# Tutorial: Debian Server for R Computing
+This tutorial gives step by step instructions for setup a Debian server with R' powerful computing abilities. 
 
 ### After reading this tutorial, you can:
 -   Simply know how to install a GNU/Linux operation system. 
@@ -13,4 +14,4 @@ This tutorial give step by step instructions for setup a Debian server with R' p
 
 [Gitbook Link](https://www.gitbook.com/book/weihanglo/debian-server-for-r-computing)
 
-*Published on 2016.1*
+*Published on January 2016*
