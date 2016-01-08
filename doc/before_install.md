@@ -3,27 +3,29 @@
 
 Debian provides many options for installation.
 
-- Download a [small installation image][small] if you have a machine with an Internet connection. 
-- Download a [complete installation image][complete] if you want to install Debian without any Internet connection.
-- Download a [live install image][live] if you want to test Debian before installing it.
+-   Download a [small installation image][small] if you have a machine with an Internet connection. 
+-   Download a [complete installation image][complete] if you want to install Debian without any Internet connection.
+-   Download a [live install image][live] if you want to test Debian before installing it.
 
 For the convenience, we will download [DVD version: debian-8.2.0-amd64-DVD-1.iso][DVD] in this manual.
 
 [small]: https://www.debian.org/distrib/netinst
 [complete]: https://www.debian.org/CD/
 [live]: https://www.debian.org/CD/live/
-[CD01]: http://cdimage.debian.org/debian-cd/8.2.0/amd64/iso-dvd/debian-8.2.0-amd64-DVD-1.iso
+[DVD]: http://cdimage.debian.org/debian-cd/8.2.0/amd64/iso-dvd/debian-8.2.0-amd64-DVD-1.iso
 
 ## Prepare Device for Booting
 
 After downloading the CD/DVD image, you need to write them directly to an USB stick or a CD/DVD.
 
 ### Create a bootable CD/DVD
-Create a bootable CD/DVD is as easy as burning your favorite movie into your DVD. Almost all modern operation systems have som built-in disc burner. To create your own bootable device, follow the approaches below:
+Create a bootable CD/DVD is as easy as burning your favorite movie into your DVD. 
+Almost all modern operation systems have som built-in disc burner. 
+To create your own bootable device, follow the approaches below:
 
-- For Windows: [built-in disc burner][windows-burn]
-- For Mac OSX: [built-in method][osx-burn]
-- For Linux: [built-in application in Gnome Desktop Environment][brasero-burn]
+-  For Windows: [built-in disc burner][windows-burn]
+-  For Mac OSX: [built-in method][osx-burn]
+-  For Linux: [built-in application in Gnome Desktop Environment][brasero-burn]
 
 [windows-burn]: http://windows.microsoft.com/en-US/windows7/Burn-a-CD-or-DVD-from-an-ISO-file
 [osx-burn]: https://support.apple.com/kb/PH19009?locale=en_US
@@ -46,9 +48,16 @@ If you do not have any blank CD at hand, you can use an USB stick as a bootable 
 After the process completes, you will get a **reusable** bootable USB stick.
 
 ## Set the BIOS Booting Priority 
-BIOS is a built-in firmware to perform hardware initialization during startup on PC. One of its main functions is to select which devices are potential bootable devices, and in which order booting from them will be attempted. Thus, you should configure your bootable device first for the boot priority. 
+[BIOS][bios] is a built-in firmware to perform hardware initialization during 
+startup on PC. One of its functions is to select which devices are potential 
+bootable devices, and in which order booting from them will be attempted. Thus, 
+you should configure your bootable device first for the boot priority. 
 
--   A modern BIOS setup utility can accessed by pressing a certain key on the keyboard when the PC starts. Usually the key is advertised for short time during the early startup, for example "**Press F2 for Setup Menu.**".
+[bios]: https://en.wikipedia.org/wiki/BIOS
+
+-   A modern [BIOS][bios] setup utility can accessed by pressing a certain key 
+    on the keyboard when the PC starts. Usually the key is advertised for short 
+    time during the early startup, for example "**Press F2 for Setup Menu.**".
 
 <img src="../img/bios-1.jpg" height="600px">
 
