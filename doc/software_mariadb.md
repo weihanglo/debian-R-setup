@@ -103,12 +103,12 @@ To avoid this, you can modifiy some MariaDB variables.
 
 First, stop MariaDB service.
 ```bash
-test@server$ sudo service mysql start 
+test@server$ sudo service mysql stop 
 ```
 
 Copy the existing data directory. Note that 
 ```bash
-test@server$ sudo cp -R -p /var/lib/mysql /newpath/by/your-choice
+test@server$ sudo cp -R -p /var/lib/mysql /newpath/by/your-choice/
 ```
 
 Edit the MariaDB configuration file
@@ -117,7 +117,7 @@ test@server$ sudo vim /etc/mysql/my.cnf
 ```
 
 Look for the entry for **datadir** (usually under **[mysqld]**). Change the path (default: **/var/lib/mysql**) to your new data directory.
-```bahs
+```
 [mysqld]
 ...
 ...
@@ -127,16 +127,35 @@ other config
 datadir = /newpath/by/your-choice
 ```
 
-Restart MariaDB server.
+
+If you need to remotely connect to database, don't bind address. Comment out following line:  
 ```
-test@server$ sudo service mysql start
+#bind-address = 127.0.0.1
 ```
 
-In addition, you can also change port for client under **[client]** group configuration. Default: 3306
-```bash
+In addition, you can also change port for client under **[client]** group configuration. Default: 3306  
+```
 [client]
 port = 13306
 ```
+
+Moreover, you can separate some metadata file per table for convenience. Default: 0  
+```
+[mysqld]
+...
+...
+...
+other config
+...
+
+innodb_file_per_table = 1
+```
+
+After all the configurations, restart MariaDB server.
+```bash
+test@server$ sudo service mysql start
+```
+
 
 ### Simple account management
 MariaDB provide a command line tool. To enter your database on localhost, you must explicit input **user** and **password**.
@@ -145,7 +164,7 @@ test@server$ mysql -u root -p
 ```
 
 If you succeed, you would see this:
-```bash
+```
 MariaDB [(none)]> 
 ```
 

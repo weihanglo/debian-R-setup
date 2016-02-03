@@ -20,7 +20,8 @@ Screenshot:
 <img src="https://www.gnome.org/wp-content/uploads/2010/09/activities-overview-940x529.png">
 
 ### LXDE (Lightweight X11 Desktop Environment)
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/LXDE-logo.svg/551px-LXDE-logo.svg.png" height="300px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/LXDE-logo.svg/551px-LXDE-logo.svg.png" height="168px">
+
 [LXDE][lxde] is a free desktop environment with comparatively low resource requirements. It is recommanded if you only need basic operation with graphical interface.   
 To install a complete Debian [LXDE][lxde] desktop environment, execute commands below:
 ```bash

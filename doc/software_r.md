@@ -38,3 +38,36 @@ test@server$ sudo apt-get install r-base r-base-dev
 ```bash
 test@server$ R --version
 ```
+
+### Useful R packages
+
+One feature of R is its capabilities to extend through third-party packages. 
+Currently, the [CRAN][cran] package repository features 7749 available packages 
+(2015-01-09). There are also many [Task Views][cran] for R users to browse
+packages for differenct area of interest.  
+
+[cran]: https://cran.r-project.org/
+[task-views]: https://cran.r-project.org/web/views/
+
+We will introduce some useful packages here.
+
+[plyr][plyr]/[dplyr][dplyr]: Fast, consistent tools for data manipulating, both 
+in or out of memory.  
+[data.table][data.table]: An extension of data.frame for large data.  
+[ggplot2][ggplot2]: A plotting system for R, based on the grammar of graphics.
+[spatstat][spatstat]: Spatial statistics focusing on spatial point patterns.  
+[installr][installr]: Make updating R (on windows) as easy as running a function.  
+[rmarkdown][rmarkdown]: Enable easy creation of dynamic documents, 
+presentations, and reports from R.  
+[DBI][DBI]: A database interface for communication between R and relational 
+database management systems.  
+
+
+[plyr]: http://plyr.had.co.nz/
+[dplyr]: https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+[data.table]: https://github.com/Rdatatable/data.table/wiki
+[ggplot2]: http://ggplot2.org/
+[spatstat]: http://spatstat.github.io/
+[installr]: https://github.com/talgalili/installr
+[rmarkdown]: http://rmarkdown.rstudio.com/
+[DBI]: https://cran.r-project.org/web/packages/DBI/README.html
