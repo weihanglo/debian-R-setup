@@ -27,9 +27,9 @@ test@server$ sudo /etc/init.d/mysql start
 ### Simple Configuration
 Simple commands for start/stop/restart server:
 ```bash
-test@server$ sudo rstudio-server stop
-test@server$ sudo rstudio-server start
-test@server$ sudo rstudio-server restart
+test@server$ sudo service mysql stop
+test@server$ sudo service mysql start
+test@server$ sudo service mysql restart
 ```
 
 Mariadb setup initial databse in /var/lib/mysql by default. 
