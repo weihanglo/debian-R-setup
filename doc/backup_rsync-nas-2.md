@@ -67,7 +67,7 @@ To create a schedules are easy, just follow its clear syntax and enjoy the amazi
 **Crontab syntax :**
 A crontab file has five fields specifying the interval and one field containing the one-line command to be executed.
 
-To define the time you can provide concrete values for minute (m), hour (h), day of month (dom), month (mon), and day of week (dow) or use '\*' in these fields (for **any**).
+To define the time you can provide concrete values for minute (m), hour (h), day of month (dom), month (mon), and day of week (dow) or use __\*__ in these fields (for **any**).
 
 
 ```bash

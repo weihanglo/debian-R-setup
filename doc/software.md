@@ -1,11 +1,11 @@
 # Softwares Installation and Other Configuration
 Before starting any simulations or programming, you need to install some software:
 
-- [Vim][vim]: Vi IMproved is a clone of vi editor for Unix.
-- [R][r]: An open source, multi-platfrom language and environment for statistical computing and graphics.   
-- [openssh][openssh]: Premier connectivity tool for remote login with the SSH protocol.
-- [Rstudio Server][rstudio]: Productive user interface for R. Also free, open-source, and cross-paltform.
-- [MariaDB][mariadb]: A popular database servers. Made by the original developers of MySQL.
+- [**Vim**][vim]: Vi IMproved is a clone of vi editor for Unix.
+- [**R**][r]: An open source, multi-platfrom language and environment for statistical computing and graphics.   
+- [**openssh**][openssh]: Premier connectivity tool for remote login with the SSH protocol.
+- [**Rstudio Server**][rstudio]: Productive user interface for R. Also free, open-source, and cross-paltform.
+- [**MariaDB**][mariadb]: A popular database servers. Made by the original developers of MySQL.
 
 [vim]: www.vim.org
 [r]: https://www.r-project.org/
