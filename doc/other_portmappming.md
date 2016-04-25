@@ -1,6 +1,4 @@
-## Other Configuration
-
-### Configure Port Forwarding on a Router
+## Configure Port Forwarding on a Router
 To forward ports, you first need to understand about what your router does.
 
 Your router has a function called **Network Address Translation**, or **NAT**, built-in. Inside your network, computers get their own addresses like **192.168.1.100**. These addresses are called ["private"][private] or ["reserved"][reserved] addresses which automatically assigned by your home router via [DHCP][DHCP]. A computers can communicate with router and with each other via its own address.
