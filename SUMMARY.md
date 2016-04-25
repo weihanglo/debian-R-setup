@@ -12,7 +12,7 @@
     -   [Rstudio Server](doc/software_rstudio.md)
     -   [MariaDB](doc/software_mariadb.md)
 -   [Backup Your Server](doc/backup.md)
-    -   [rsync](doc/backup_rsync.md)
+    -   [Rsync](doc/backup_rsync.md)
     -   [Backup with rsync and NAS - 1: Setting Rsync Daemon](doc/backup_rsync-nas-1.md)
     -   [Backup with rsync and NAS - 2: Create Scheduled Tasks to Sync](doc/backup_rsync-nas-2.md)
 -   [Other Configuration](doc/other.md)
