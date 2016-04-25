@@ -1,4 +1,4 @@
-## Backup with rsync and NAS - 1: Setting rsync daemon
+## Setting rsync daemon
 
 We already leared about the powerful rsync for transferring files. Now, we will implement rsync on a Network-attached Storage (NAS). Assumed we have two server2 and one NAS. All these devices is connected with each other via [local area network][LAN] (LAN). 
 
@@ -105,7 +105,7 @@ After finishing configure `rsyncd.conf`, you should create secrets file at the p
 user@myNAS$ sudo vim /etc/rsyncd.secrets
 ```
 
-Then follow the `username:password` pattern for the authentication. **_For security_, tyr to avoid using the same password as the server account.**
+Then follow the `username:password` pattern for the authentication. **_For security issue_, try to avoid using the same password as the server account.**
 ```
 user:mypassword
 root:rootHasItsOwnPassword

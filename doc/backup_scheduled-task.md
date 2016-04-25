@@ -1,4 +1,4 @@
-## Backup with rsync and NAS - 2: Create Scheduled Tasks to Sync
+## Create Scheduled Tasks to Sync
 
 Finished the server-side mission. Let's turn to client side!
 
@@ -97,5 +97,5 @@ Finally, set your own cron jobs to your rsync script. Remember, using Absolute p
 
 ```bash
 #m   h   dom  mon  dow   command
-0    8    *    *   1,4    ~/crom_scripts/rsync-backup.sh
+0    8    *    *   1,4    ~/cron_scripts/rsync-backup.sh
 ```
