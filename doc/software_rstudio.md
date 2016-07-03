@@ -8,23 +8,23 @@ command history, and workspace management just like  a Matlab environment.
 ### Installation
 To download and install RStudio Server. Execute the following commands. Note that **gdebi** should be installed first.
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install gdebi-core
-test@server$ wget https://download2.rstudio.org/rstudio-server-0.99.491-amd64.deb
-test@server$ sudo gdebi rstudio-server-0.99.491-amd64.deb
+$ sudo apt-get update
+$ sudo apt-get install gdebi-core
+$ wget https://download2.rstudio.org/rstudio-server-0.99.491-amd64.deb
+$ sudo gdebi rstudio-server-0.99.491-amd64.deb
 ```
 
 To verify your installation, excute following command:
 ```bash
-test@server$ sudo rstudio-server verify-installation
+$ sudo rstudio-server verify-installation
 ```
 
 ### Simple Configuration
 Simple commands for start/stop/restart server
 ```bash
-test@server$ sudo rstudio-server stop
-test@server$ sudo rstudio-server start
-test@server$ sudo rstudio-server restart
+$ sudo rstudio-server stop
+$ sudo rstudio-server start
+$ sudo rstudio-server restart
 ```
 
 The default port for Rstudio server is **8787**. That means any can connect to the server through the URL **http://<server-ip/hostname>:8787**.  
@@ -35,7 +35,7 @@ www-port=18787
 
 Note that after any configuration, always restart server to apply your changes. 
 ```bash
-test@server$ sudo rstudio-server restart
+$ sudo rstudio-server restart
 ```
 
 Other tips:

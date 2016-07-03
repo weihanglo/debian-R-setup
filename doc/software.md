@@ -21,8 +21,8 @@ Now, we need an useful text editor. Let's download the poweful **Vim**.
 
 ## Vim
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install vim
+$ sudo apt-get update
+$ sudo apt-get install vim
 ```
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg">

@@ -12,8 +12,8 @@ Why choose **MariaDB** over MySQL? You should see [this][choose-mariadb]!
 ### Installation
 First download MariaDB client and server
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install mariadb-client mariadb-server
+$ sudo apt-get update
+$ sudo apt-get install mariadb-client mariadb-server
 ```
 
 Then, set the password for root.
@@ -21,21 +21,21 @@ Then, set the password for root.
 
 Finally, start MariaDB server
 ```bash
-test@server$ sudo /etc/init.d/mysql start
+$ sudo /etc/init.d/mysql start
 ```
 
 ### Simple Configuration
 Simple commands for start/stop/restart server:
 ```bash
-test@server$ sudo service mysql stop
-test@server$ sudo service mysql start
-test@server$ sudo service mysql restart
+$ sudo service mysql stop
+$ sudo service mysql start
+$ sudo service mysql restart
 ```
 
 Mariadb setup initial databse in /var/lib/mysql by default. 
 If you want to manually configure your installation, go to the secure installation:
 ```bash
-test@server$ sudo mysql_secure_installation
+$ sudo mysql_secure_installation
 ```
 
 If you have set a strong password, skip the first step.
@@ -103,17 +103,17 @@ To avoid this, you can modifiy some MariaDB variables.
 
 First, stop MariaDB service.
 ```bash
-test@server$ sudo service mysql stop 
+$ sudo service mysql stop 
 ```
 
 Copy the existing data directory. Note that 
 ```bash
-test@server$ sudo cp -R -p /var/lib/mysql /newpath/by/your-choice/
+$ sudo cp -R -p /var/lib/mysql /newpath/by/your-choice/
 ```
 
 Edit the MariaDB configuration file
 ```bash
-test@server$ sudo vim /etc/mysql/my.cnf
+$ sudo vim /etc/mysql/my.cnf
 ```
 
 Look for the entry for **datadir** (usually under **[mysqld]**). Change the path (default: **/var/lib/mysql**) to your new data directory.
@@ -153,14 +153,14 @@ innodb_file_per_table = 1
 
 After all the configurations, restart MariaDB server.
 ```bash
-test@server$ sudo service mysql start
+$ sudo service mysql start
 ```
 
 
 ### Simple account management
 MariaDB provide a command line tool. To enter your database on localhost, you must explicit input **user** and **password**.
 ```bash
-test@server$ mysql -u root -p
+$ mysql -u root -p
 ```
 
 If you succeed, you would see this:
@@ -200,8 +200,8 @@ Here are some recommandation:
 Mariadb is under GPL license. Some other language need a less strict license version to connect to MariaDB server. 
 Hence, install LGPL version library of client-side.
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install libmariadb-client-lgpl-dev
+$ sudo apt-get update
+$ sudo apt-get install libmariadb-client-lgpl-dev
 ```
 
 With this library, you can user almost all SQL-like commands via popular languages such as R:

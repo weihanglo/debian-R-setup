@@ -71,8 +71,8 @@ You can use all logical volumes as tradtional partition at will!
 To use LVM after installation. You may need to download the command line tool.
 
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install lvm2
+$ sudo apt-get update
+$ sudo apt-get install lvm2
 ```
 
 For more infomation, please check [Debian Wiki for LVM][debian-lvm].

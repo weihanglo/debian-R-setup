@@ -12,7 +12,7 @@ For downloading latest version of R, adding additional repositories to debian re
 
 - For a backport of latest R to Debian 8 (jessie), simply open **/etc/apt/sourece.list**.
 ```bash
-test@server$ sudo vim /etc/apt/source.list
+$ sudo vim /etc/apt/source.list
 ```
 
 - Then add following lines into **/etc/apt/sourece.list**.
@@ -25,18 +25,18 @@ _For example:_ `deb http://cran.csie.ntu.edu.tw/bin/linux/debian jessie-cran3/`.
 
 - Fetch and import Debian backports archives on CRAN (CRAN Debian archive) with key ID 381BA480.
 ```bash
-test@server$ sudo apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480
+$ sudo apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480
 ```
 
 - Finally, install R.
 ```bash
-test@server$ sudo apt-get update
-test@server$ sudo apt-get install r-base r-base-dev
+$ sudo apt-get update
+$ sudo apt-get install r-base r-base-dev
 ```
 
 - After the installation, execute this command to check the version of R in your server is up-to-date.
 ```bash
-test@server$ R --version
+$ R --version
 ```
 
 ### Useful R packages

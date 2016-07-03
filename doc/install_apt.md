@@ -7,8 +7,9 @@ Most Debian-based systems provied a powerful package manager called **Advanced P
 
 
 Before starting the configuraion, check the network connection in advance:
+
 ```bash
-test@server$ ping www.gooogle.com
+$ ping www.gooogle.com
 ```
 
 If you receive something like, it mean your connection is well:
@@ -24,7 +25,7 @@ PING www.google.com (74.125.203.105) 56(84) bytes of data.
 - Open **/etc/apt/source.list**
 We will use **vi** to edit **source.list**. If you are not familiar to **vi**, use **nano** to substitube for **vi** in the command.
 ```bash
-test@server$ sudo vi /etc/apt/source.list
+$ sudo vi /etc/apt/source.list
 ```
 
 - For an archieve mirror of Debian 8 (jessie) repository, simply add following lines into **sourece.list**.
@@ -50,4 +51,3 @@ After all the commands above, you can install whatever your want in the Debian R
 - **apt-get update**: This command can resynchronize and update all packages from the sources. For security issue, ensure you update your server regulariry.
 - **apt-get install/remove**: These command can simply install/remove packages you specified.
 - **apt-get auroremove**: After you remove some pakcages, you may want to execute this command for **clean all the dependency**.
-

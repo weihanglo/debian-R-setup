@@ -15,23 +15,26 @@ Before we started, let's learn some few options in `crontab`.
 For example:
 - opening and modifying on cron table for user2
     ```bash
-    test@server$ sudo crontab -u user2 -e 
+    $ sudo crontab -u user2 -e
     ```
 
 - remove cron tabls for user1
     ```bash
-    test@server$ sudo crontab -u user1 -r 
+    $ sudo crontab -u user1 -r
     ```
 
 ### 1. write a rsync script
-Since crontab can only execute one line command in a task, we should write down our own **Bash Script** for multiple commands. 
+
+Since crontab can only execute one line command in a task, we should write down our own **Bash Script** for multiple commands.
 
 First, create a script wherever you want. (maybe at `/home/user/cron_scripts`)
+
 ```bash
-test@server$ vim ~/crom_scripts/rsync-backup.sh
+$ vim ~/crom_scripts/rsync-backup.sh
 ```
 
 In the `rsync-backup.sh` file, backup using rsync.
+
 ```bash
 #!/bin/bash
 # Modified Time: Sun Apr 24 17:00:00 CST 2016
@@ -59,12 +62,13 @@ and you want to login with `user` account, you must create a file containing onl
 After write your automated scripts. Open and modify cron tables by `crontab`
 
 ```bash
-test@server$ sudo crontab -e
+$ sudo crontab -e
 ```
 
 To create a schedules are easy, just follow its clear syntax and enjoy the amazing automatic tasks.
 
 **Crontab syntax :**
+
 A crontab file has five fields specifying the interval and one field containing the one-line command to be executed.
 
 To define the time you can provide concrete values for minute (m), hour (h), day of month (dom), month (mon), and day of week (dow) or use __\*__ in these fields (for **any**).
@@ -82,12 +86,14 @@ To define the time you can provide concrete values for minute (m), hour (h), day
 ```
 
 For example, you can run a backup of all your user accounts at 5 a.m every Monday:
+
 ```bash
 #m   h   dom  mon  dow   command
 0    5    *    *    1     tar -zcf /var/backups/home.tgz /home/¬
 ```
 
 Or you want to repeat the command every four hours:
+
 ```bash
 #m   h   dom  mon  dow   command
 0   */2   *    *    *     sudo apt-get update

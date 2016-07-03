@@ -14,13 +14,13 @@ separate a host specification and source/destination path.
 To sync files from remote to local is just like cp/scp:
 
 ```bash
-test@server$ rsync user@hostname:path/to/file /path/to/syncfile
+$ rsync user@hostname:path/to/file /path/to/syncfile
 ```
 
 Or backup to remote
 
 ```bash
-test@server$ rsync /path/to/file user@hostname:path/to/syncfile
+$ rsync /path/to/file user@hostname:path/to/syncfile
 ```
 
 If you use non-default port for your remote-shell program, or want to add some 
@@ -28,7 +28,7 @@ different feature while transfer via ssh/rsh, just add specified remote-shell
 command after `-e` option:
 
 ```bash
-test@server$ rsync -e 'ssh -p 10022' user@hostname:path/to/syncfile
+$ rsync -e 'ssh -p 10022' user@hostname:path/to/syncfile
 ```
 
 #### 2. Contacting an rsync daemon directly via TCP
@@ -40,20 +40,20 @@ To use rsync daemon for sync, a double colon **(::)** is required to separate th
 The default rsync daemon TCP port typically using **873**.
 
 ```bash
-test@server$ rsync user@hostname::module /path/to/syncfile
+$ rsync user@hostname::module /path/to/syncfile
 ```
 
 However, rsync daemon would not encrypt data while transfering by default, you should manually encrypt by `ssh` command as your needs. (Encryption may lower some speed, but is necessary when connecting to internet.)
 
 ```bash
-test@server$ rsync -e 'ssh' user@hostname::path/to/file /path/to/syncfile
+$ rsync -e 'ssh' user@hostname::path/to/file /path/to/syncfile
 ```
 
 The `rsync` schema is another way to do the same thing:
 ```bash
 # Example for rsync:// schema
 # rsync [OPTION]... rsync://[USER@]HOST[:PORT]/MODULE[/SRC] [DEST]
-rsync rsync://test@server/module /path/to/your/copyfile
+rsync rsync:///module /path/to/your/copyfile
 ```
 
 *__ATTENTAION!!__* : 
