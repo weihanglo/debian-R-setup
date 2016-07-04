@@ -161,6 +161,18 @@ server {
 
 Shiny Server administration document explains lots of features clearly. We will only show some useful config in this tutorial.
 
+First, create a new account to manage all Shiny apps.
+
+```bash
+$ sudo adduser shinyapps
+
+# Then, login as shinyapps. Create a root folder to manage apps.
+
+$ mkdir -p ~/ShinyApps/
+```
+
+Here is the example configuration file at `/etc/shiny-server/shiny-server.conf`.
+
 ```
 server {
   listen 3838;
@@ -181,13 +193,26 @@ server {
     directory_index on;
   }
 
-  # Allow users to host their own apps in ~/ShinyApps
+  # Allow users to host their own apps in `~/ShinyApps`
   location /users {
     run_as :HOME_USER:;
     user_dirs;
   }
 }
 ```
+
+To test your configs, put your Shiny apps in `~/ShinyApps/`. Assumed the hierarchy of your shiny app looks like this,
+
+```bash
+myapps/
+├── server.R
+└── ui.R
+```
+
+You should move your app folder into `~/ShinyApps/` directory such as `~/ShinyApps/myapps/`.
+
+Finally, use a web browser to open `http://localhost:3838/myapps/`. If you can connect to your app, the shiny server is successfully installed and working.
+
 
 #### Add Configurations to NGINX for Shiny Server
 
