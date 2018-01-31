@@ -1,0 +1,23 @@
+sudo: required
+language: node_js
+node_js:
+  - "9"
+cache:
+  yarn: true
+
+before_script:
+  - rm -rf _book
+script:
+  - yarn
+  - yarn add gitbook-cli
+  - yarn gitbook build
+
+deploy:
+  local-dir: _book
+  provider: pages
+  target-branch: gh-pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master

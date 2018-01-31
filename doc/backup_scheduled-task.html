@@ -1,0 +1,559 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Create Scheduled Tasks to Sync · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="other.html" />
+    
+    
+    <link rel="prev" href="backup_rsync-daemon.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="before_install.html">
+            
+                <a href="before_install.html">
+            
+                    
+                    Before the Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="install_debian.html">
+            
+                <a href="install_debian.html">
+            
+                    
+                    Install Debian
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="install_os.html">
+            
+                <a href="install_os.html">
+            
+                    
+                    Install Debian Operation System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="install_apt.html">
+            
+                <a href="install_apt.html">
+            
+                    
+                    Configure the APT Package Manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="install_lvm.html">
+            
+                <a href="install_lvm.html">
+            
+                    
+                    Optional: Use LVM for Partition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="install_desktop-env.html">
+            
+                <a href="install_desktop-env.html">
+            
+                    
+                    Optional: Install Graphical User Desktop Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="software.html">
+            
+                <a href="software.html">
+            
+                    
+                    Softwares Installation and Other Configuration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="software_r.html">
+            
+                <a href="software_r.html">
+            
+                    
+                    R
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="software_openssh.html">
+            
+                <a href="software_openssh.html">
+            
+                    
+                    OpenSSH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="software_rstudio.html">
+            
+                <a href="software_rstudio.html">
+            
+                    
+                    Rstudio Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="software_mariadb.html">
+            
+                <a href="software_mariadb.html">
+            
+                    
+                    MariaDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="backup.html">
+            
+                <a href="backup.html">
+            
+                    
+                    Backup Your Server
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="backup_rsync.html">
+            
+                <a href="backup_rsync.html">
+            
+                    
+                    Rsync
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="backup_rsync-daemon.html">
+            
+                <a href="backup_rsync-daemon.html">
+            
+                    
+                    Setting Rsync Daemon
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.3" data-path="backup_scheduled-task.html">
+            
+                <a href="backup_scheduled-task.html">
+            
+                    
+                    Create Scheduled Tasks to Sync
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="other.html">
+            
+                <a href="other.html">
+            
+                    
+                    Other Configuration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="other_portmapping.html">
+            
+                <a href="other_portmapping.html">
+            
+                    
+                    Port Mapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="other_nginx.html">
+            
+                <a href="other_nginx.html">
+            
+                    
+                    Nginx and Shiny Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Create Scheduled Tasks to Sync</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="create-scheduled-tasks-to-sync">Create Scheduled Tasks to Sync</h2>
+<p>Finished the server-side mission. Let&apos;s turn to client side!</p>
+<h3 id="crontab-for-simple-scheduled-tasks"><code>crontab</code> for simple scheduled tasks</h3>
+<p>Task on the client side is relatively simple. Just need to schedule some commands for automatically synchronizing your data. In a GNU/Linux system, there is a program called <code>cron</code>. It is a program that schedule task for us. As for scheduling task, it is also a daemon tool for many routines. To create cron jobs, we use <code>crontab</code> command to write down on cron table.</p>
+<p>Before we started, let&apos;s learn some few options in <code>crontab</code>.</p>
+<ul>
+<li><code>-u</code> : specify a user&apos;s cron table to use. Must has the permissions.</li>
+<li><code>-l</code> : list a user&apos;s cron tabls</li>
+<li><code>-r</code> : remove cron</li>
+<li><code>-e</code> : edit <strong>current</strong> user&apos;s cron table if no using <code>-u</code></li>
+</ul>
+<p>For example:</p>
+<ul>
+<li><p>opening and modifying on cron table for user2</p>
+<pre><code class="lang-bash">  $ sudo crontab -u user2 <span class="hljs-_">-e</span>
+</code></pre>
+</li>
+<li><p>remove cron tabls for user1</p>
+<pre><code class="lang-bash">  $ sudo crontab -u user1 -r
+</code></pre>
+</li>
+</ul>
+<h3 id="1-write-a-rsync-script">1. write a rsync script</h3>
+<p>Since crontab can only execute one line command in a task, we should write down our own <strong>Bash Script</strong> for multiple commands.</p>
+<p>First, create a script wherever you want. (maybe at <code>/home/user/cron_scripts</code>)</p>
+<pre><code class="lang-bash">$ vim ~/crom_scripts/rsync-backup.sh
+</code></pre>
+<p>In the <code>rsync-backup.sh</code> file, backup using rsync.</p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-comment"># Modified Time: Sun Apr 24 17:00:00 CST 2016</span>
+<span class="hljs-comment"># Author: john doe (john_doe@example.com)</span>
+<span class="hljs-comment"># Usage: Synchronize data to NAS</span>
+
+<span class="hljs-built_in">echo</span> Start rsync backup at $(date).<span class="hljs-string">&quot;
+
+rsync -axvzHSX --numeric-ids --progress --delete --password-file=/etc/rsyncd.cli.secrets /home/ rsync://user@192.168.1.101/server1
+
+echo End rsync backup at <span class="hljs-variable">$(date)</span>.&quot;</span>
+</code></pre>
+<p>You may consider why there is anoterh <strong>password file</strong> again. The <strong>password file</strong> contain only a password corresponding to the <code>rsyncd.secrets</code> file you created in the NAS server-side before. For instance, if you have a <code>rsyncd.secrets</code> file with the contents such as,</p>
+<pre><code>user:mypassword
+root:rootHasItsOwnPassword
+</code></pre><p>and you want to login with <code>user</code> account, you must create a file containing only the password <code>mypassword</code>. Still, this is a plain text file, so you must change its permission to <code>600</code> by the <code>chmod</code> command as same as what you done to <code>rsyncd.secrets</code> before.</p>
+<h3 id="2-scheduling-your-tasks">2. Scheduling your tasks</h3>
+<p>After write your automated scripts. Open and modify cron tables by <code>crontab</code></p>
+<pre><code class="lang-bash">$ sudo crontab <span class="hljs-_">-e</span>
+</code></pre>
+<p>To create a schedules are easy, just follow its clear syntax and enjoy the amazing automatic tasks.</p>
+<p><strong>Crontab syntax :</strong></p>
+<p>A crontab file has five fields specifying the interval and one field containing the one-line command to be executed.</p>
+<p>To define the time you can provide concrete values for minute (m), hour (h), day of month (dom), month (mon), and day of week (dow) or use <strong>*</strong> in these fields (for <strong>any</strong>).</p>
+<pre><code class="lang-bash">*    *    *    *    *    <span class="hljs-built_in">command</span> to be executed
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- day of week (0 - 7) (Sunday=0,7)
+|    |    |    +------- month (1 - 12)
+|    |    +--------- day of month (1 - 31)
+|    +----------- hour (0 - 23)
++------------- min (0 - 59)
+</code></pre>
+<p>For example, you can run a backup of all your user accounts at 5 a.m every Monday:</p>
+<pre><code class="lang-bash"><span class="hljs-comment">#m   h   dom  mon  dow   command</span>
+0    5    *    *    1     tar -zcf /var/backups/home.tgz /home/&#xAC;
+</code></pre>
+<p>Or you want to repeat the command every four hours:</p>
+<pre><code class="lang-bash"><span class="hljs-comment">#m   h   dom  mon  dow   command</span>
+0   */2   *    *    *     sudo apt-get update
+</code></pre>
+<p>Finally, set your own cron jobs to your rsync script. Remember, using Absolute path to the script is always better than relative path. This cron will execute at 8:00 A.M every Monday and Thursday.</p>
+<pre><code class="lang-bash"><span class="hljs-comment">#m   h   dom  mon  dow   command</span>
+0    8    *    *   1,4    ~/cron_scripts/rsync-backup.sh
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="backup_rsync-daemon.html" class="navigation navigation-prev " aria-label="Previous page: Setting Rsync Daemon">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="other.html" class="navigation navigation-next " aria-label="Next page: Other Configuration">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Create Scheduled Tasks to Sync","level":"1.5.3","depth":2,"next":{"title":"Other Configuration","level":"1.6","depth":1,"path":"doc/other.md","ref":"doc/other.md","articles":[{"title":"Port Mapping","level":"1.6.1","depth":2,"path":"doc/other_portmapping.md","ref":"doc/other_portmapping.md","articles":[]},{"title":"Nginx and Shiny Server","level":"1.6.2","depth":2,"path":"doc/other_nginx.md","ref":"doc/other_nginx.md","articles":[]}]},"previous":{"title":"Setting Rsync Daemon","level":"1.5.2","depth":2,"path":"doc/backup_rsync-daemon.md","ref":"doc/backup_rsync-daemon.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/backup_scheduled-task.md","mtime":"2018-01-31T03:17:26.376Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-31T03:18:32.490Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
