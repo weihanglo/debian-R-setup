@@ -1,6 +1,6 @@
 # Tutorial: Debian Server for R Computing
 
-[![Travis](https://img.shields.io/travis/weihanglo/debian-R-setup.svg)](https://travis-ci.org/weihanglo/debian-R-setup)
+[![Build Status](https://github.com/weihanglo/debian-R-setup/workflows/CD/badge.svg)](https://github.com/weihanglo/debian-R-setup/actions?query=workflow%3ACD)
 
 This tutorial gives step by step instructions to setup a Debian server for R computing. 
 
