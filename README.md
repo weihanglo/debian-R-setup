@@ -15,7 +15,7 @@ This tutorial gives step by step instructions to setup a Debian server for R com
 * A computer with appropriate networking.
 * Little knowledge of [Linux](https://www.debian.org/doc/manuals/debian-reference/ch01.en.html).
 
-[Gitbook Link](https://www.gitbook.com/book/weihanglo/debian-server-for-r-computing/)
+[Gitbook Link](https://weihanglo.gitbook.io/debian-server-for-r-computing/)
 
 [Self-hosted Link](https://weihanglo.tw/debian-R-setup/)
 
