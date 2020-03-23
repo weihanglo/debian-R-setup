@@ -96,7 +96,7 @@ Or you want to repeat the command every four hours:
 
 ```bash
 #m   h   dom  mon  dow   command
-0   */2   *    *    *     sudo apt-get update
+0   */4   *    *    *     sudo apt-get update
 ```
 
 Finally, set your own cron jobs to your rsync script. Remember, using Absolute path to the script is always better than relative path. This cron will execute at 8:00 A.M every Monday and Thursday.
